@@ -1,6 +1,25 @@
 library(spduration)
 context("`predict` handling of NA values")
 
+test_that("methods run without error", {
+  data(model.coups)
+  
+  expect_is(predict(model.coups), "numeric")
+  expect_is(fitted(model.coups), "numeric")
+  expect_is(residuals(model.coups), "numeric")
+  expect_equal(predict(model.coups), fitted(model.coups))
+})
+
+test_that("predict matches known values", {
+  data(model.coups)
+  
+  expect_equal(
+    head(predict(model.coups)),
+    c(0.0165520048538834, 0.00572643232295353, 0.00302637135976872, 
+      0.00244680644578594, 0.0164928008959435, 0.0367075314817715)
+  )
+})
+
 # test code
 # estimate model and predict
 # load('data/coups.rda')

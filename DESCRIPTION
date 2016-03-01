@@ -1,7 +1,7 @@
 Package: spduration
 Title: Split-Population Duration (Cure) Regression
-Version: 0.14.0
-Date: 2015-10-27
+Version: 0.15.0
+Date: 2016-02-29
 Authors@R: c(
     person("Andreas", "Beger", role = c("aut", "cre"), email = "adbeger@gmail.com"),
     person("Daina", "Chiba", role = c("aut"), email = "dchiba@essex.ac.uk"),
@@ -10,7 +10,8 @@ Authors@R: c(
     person("Shahryar", "Minhas", role = c("aut"), email = "hermes829@gmail.com"),
     person("Michael", "Ward", role = c("cph"), email = "michael.don.ward@gmail.com")
     )
-Description: Functions for estimating split-duration regression models and various associated generic function methods.
+Description: Functions for estimating split-duration regression models and
+    various associated generic function methods.
 Depends: R (>= 3.1.2)
 License: GPL-3
 LazyData: true
@@ -18,8 +19,9 @@ Imports: corpcor, graphics, plyr, MASS, separationplot, stats, Rcpp (>=
         0.11.0), xtable
 Suggests: testthat
 LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 5.0.1
 NeedsCompilation: yes
-Packaged: 2015-10-27 11:06:23 UTC; andybega
+Packaged: 2016-02-29 19:17:08 UTC; andybega
 Author: Andreas Beger [aut, cre],
   Daina Chiba [aut],
   Daniel Hill [aut],
@@ -28,4 +30,4 @@ Author: Andreas Beger [aut, cre],
   Michael Ward [cph]
 Maintainer: Andreas Beger <adbeger@gmail.com>
 Repository: CRAN
-Date/Publication: 2015-10-27 16:26:03
+Date/Publication: 2016-03-01 11:11:00
