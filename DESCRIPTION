@@ -1,7 +1,7 @@
 Package: spduration
 Title: Split-Population Duration (Cure) Regression
-Version: 0.15.0
-Date: 2016-02-29
+Version: 0.15.1
+Date: 2016-05-11
 Authors@R: c(
     person("Andreas", "Beger", role = c("aut", "cre"), email = "adbeger@gmail.com"),
     person("Daina", "Chiba", role = c("aut"), email = "dchiba@essex.ac.uk"),
@@ -21,7 +21,7 @@ Suggests: testthat
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.1
 NeedsCompilation: yes
-Packaged: 2016-02-29 19:17:08 UTC; andybega
+Packaged: 2016-05-11 16:13:51 UTC; andybega
 Author: Andreas Beger [aut, cre],
   Daina Chiba [aut],
   Daniel Hill [aut],
@@ -30,4 +30,4 @@ Author: Andreas Beger [aut, cre],
   Michael Ward [cph]
 Maintainer: Andreas Beger <adbeger@gmail.com>
 Repository: CRAN
-Date/Publication: 2016-03-01 11:11:00
+Date/Publication: 2016-05-12 15:15:16
