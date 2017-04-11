@@ -1,4 +1,12 @@
-# spduration 0.15.1
+# spduration 0.16.0 (2017-04-11)
+
+* separationplot.spdur -> sepplot. `separationplot` is a standalone function so change the `spdur` version to a simple wrapper. 
+* Cleaned up NAMESPACE. Moved `stats` to imported package in description and removed all associated explicit namespace generic imports. 
+* Added package vignette.
+* Added file `init.c` with calls to `R_registerRoutines()` and `R_useDynamicSymbols()`; also use `.registration=TRUE` in `useDynLib` in `NAMESPACE`. R-devel (and R 3.4.0 in the future) `R CMD check` issues a NOTE for registration of routines, this is to avoid that note.  
+* Updated DESCRIPTION and added references.
+
+# spduration 0.15.1 (2016-05-12)
 
 * Fixes bug in `summary.spdur` that would return wrong estimates for `log(alpha)`.
 * Better column names for `summary` and `xtable` methods.

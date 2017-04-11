@@ -16,7 +16,7 @@
 #' AIC(model.coups)
 #'
 #' @export 
-#' @importFrom stats AIC
+#' @import stats
 AIC.spdur <- function(object, ..., k = 2)
 {
   npar <- length(object$coefficients)
@@ -44,7 +44,6 @@ AIC.spdur <- function(object, ..., k = 2)
 #' BIC(model.coups)
 #' 
 #' @export
-#' @importFrom stats BIC
 BIC.spdur <- function(object, ...)
 {
   bic <- AIC(object, k = log(nobs(object)))

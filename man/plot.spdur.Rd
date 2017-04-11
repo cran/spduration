@@ -13,7 +13,7 @@
 
 \item{ci}{For plots of the hazard rate, should a confidence interval be included?}
 
-\item{\dots}{Optional parameters passed to \code{\link{separationplot.spdur}}
+\item{\dots}{Optional parameters passed to \code{\link{sepplot}}
 or \code{\link{plot_hazard}}.}
 }
 \description{
@@ -27,11 +27,11 @@ confidence intervals.
 data(model.coups)
 
 # plot
-plot(model.coups)
 plot(model.coups, type = "hazard")
+
+plot(model.coups)
 
 }
 \seealso{
-\code{\link{separationplot.spdur}}, \code{\link{plot_hazard}}
+\code{\link{sepplot}}, \code{\link{plot_hazard}}
 }
-

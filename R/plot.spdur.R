@@ -10,17 +10,18 @@
 #' @param x An object of class "\code{spdur}".
 #' @param type What kind of plot? "sepplot" or "hazard".
 #' @param ci For plots of the hazard rate, should a confidence interval be included?
-#' @param \dots Optional parameters passed to \code{\link{separationplot.spdur}}
+#' @param \dots Optional parameters passed to \code{\link{sepplot}}
 #'   or \code{\link{plot_hazard}}.
 #' 
-#' @seealso \code{\link{separationplot.spdur}}, \code{\link{plot_hazard}}
+#' @seealso \code{\link{sepplot}}, \code{\link{plot_hazard}}
 #' @examples
 #' # get model estimates
 #' data(model.coups)
 #' 
 #' # plot
-#' plot(model.coups)
 #' plot(model.coups, type = "hazard")
+#' 
+#' plot(model.coups)
 #' 
 #' @export 
 plot.spdur <- function(x, type="sepplot", ci=TRUE, ...) { 
@@ -30,7 +31,7 @@ plot.spdur <- function(x, type="sepplot", ci=TRUE, ...) {
   if (type=="hazard") {
     plot_hazard(x, ci = ci, ...)
   } else if (type=="sepplot") {
-    separationplot.spdur(x, ...)
+    sepplot(x, ...)
   } else {
     stop("Unrecognized plot type")
   }
@@ -53,7 +54,7 @@ plot.spdur <- function(x, type="sepplot", ci=TRUE, ...) {
 #'    order as the risk equation in \code{x}. Defaults to means.
 #' @param \dots Additional parameters passed to \code{\link{plot}}.
 #' 
-#' @seealso \code{\link{separationplot.spdur}}
+#' @seealso \code{\link{sepplot}}
 #' 
 #' @examples 
 #' # Get model estimates
@@ -63,10 +64,8 @@ plot.spdur <- function(x, type="sepplot", ci=TRUE, ...) {
 #' plot_hazard(model.coups, ci = FALSE)
 #' plot_hazard(model.coups, ci = TRUE)
 #' 
-#' @importFrom MASS mvrnorm
-#' @importFrom graphics lines plot
-#' @importFrom stats quantile rnorm
 #' @export
+#' @import graphics
 plot_hazard <- function(x, t = NULL, ci=TRUE, n=1000, xvals=NULL, zvals=NULL, ...) {
   
   # Set t vector if needed to 1.2 * max observed duration; lower limit is 1
@@ -118,7 +117,7 @@ plot_hazard <- function(x, t = NULL, ci=TRUE, n=1000, xvals=NULL, zvals=NULL, ..
                out = NULL, dist = x$distr)
   
   if (ci==TRUE) {
-    Coef_smpl <- mvrnorm(n = n, mu = coef(x, "full"), Sigma = vcov(x, "full"))
+    Coef_smpl <- MASS::mvrnorm(n = n, mu = coef(x, "full"), Sigma = vcov(x, "full"))
     
     b_idx <- 1:x$n.terms$duration
     g_idx <- (max(b_idx) + 1):(max(b_idx) + x$n.terms$risk)
@@ -231,9 +230,8 @@ plot_hazard2 <- function(x, ...) {
 
 #' Generate a Separation Plot
 #' 
-#' \code{\link{separationplot}} method for class ``\code{spdur}''.
-#' 
-#' @method separationplot spdur
+#' A \code{\link[separationplot]{separationplot}} wrapper for class 
+#' ``\code{spdur}''. 
 #' 
 #' @param x An object of class "\code{spdur}".
 #' @param pred_type Which statistic to plot, i.e. "conditional hazard" or 
@@ -243,34 +241,35 @@ plot_hazard2 <- function(x, ...) {
 #'   "atrisk" for (conditional) risk.
 #' @param endSpellOnly Should only the last observation in each spell be kept? 
 #' \code{FALSE} by default.
-#' @param lwd1 See \code{\link{separationplot}}.
-#' @param lwd2 See \code{\link{separationplot}}.
-#' @param shuffle See \code{\link{separationplot}}.
-#' @param heading See \code{\link{separationplot}}.
-#' @param show.expected See \code{\link{separationplot}}.
-#' @param newplot See \code{\link{separationplot}}
-#' @param type See \code{\link{separationplot}}.
-#' @param \dots Optional parameters passed to \code{\link{separationplot}}, 
+#' @param lwd1 See \code{\link[separationplot]{separationplot}}.
+#' @param lwd2 See \code{\link[separationplot]{separationplot}}.
+#' @param shuffle See \code{\link[separationplot]{separationplot}}.
+#' @param heading See \code{\link[separationplot]{separationplot}}.
+#' @param show.expected See \code{\link[separationplot]{separationplot}}.
+#' @param newplot See \code{\link[separationplot]{separationplot}}
+#' @param type See \code{\link[separationplot]{separationplot}}.
+#' @param \dots Optional parameters passed to \code{\link[separationplot]{separationplot}}, 
 #'   e.g. type of statistic to calculate.
 #' 
-#' @details Creates a \code{\link{separationplot}} of fitted values from 
+#' @details Creates a separation plot of fitted values from 
 #' split-duration model results using \code{\link{predict.spdur}}.
 #' 
-#' @seealso \code{\link{separationplot}}, \code{\link{predict.spdur}}
+#' @seealso \code{\link[separationplot]{separationplot}}, \code{\link{predict.spdur}}
 #' @examples
 #' # get model estimates
+#' library(separationplot)
 #' data(model.coups)
 #' 
 #' # plot
 #' p <- plot(model.coups)
+#' p
 #' 
-#' @importFrom separationplot separationplot
-#' @importFrom stats predict
 #' @export 
-#' @method separationplot spdur
-separationplot.spdur <- function(x, pred_type="conditional hazard", obs=NULL, 
-  endSpellOnly=FALSE, lwd1=5, lwd2=2, shuffle=TRUE, heading="", 
+#' @import separationplot
+sepplot <- function(x, pred_type="conditional hazard", obs=NULL, 
+  endSpellOnly = FALSE, lwd1 = 5, lwd2 = 2, shuffle=TRUE, heading="", 
   show.expected=TRUE, newplot=FALSE, type="line", ...) {
+  
   # Input validation
   if (!'spdur' %in% class(x)) stop('"object" argument must have class "spdur"')
   
@@ -297,8 +296,8 @@ separationplot.spdur <- function(x, pred_type="conditional hazard", obs=NULL,
   }
   
   # Separationplot call
-  plot <- separationplot(pred, actual,
-                         shuffle=T, heading='', show.expected=T, newplot=F, 
-                         type='line', lwd1=lwd1, lwd2=lwd2, ...)
+  plot <- separationplot::separationplot(pred, actual,
+                         shuffle=shuffle, heading=heading, show.expected=show.expected, newplot=newplot, 
+                         type=type, lwd1=lwd1, lwd2=lwd2, ...)
 }
 
