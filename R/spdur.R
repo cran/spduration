@@ -14,13 +14,13 @@
 #' default \code{duration-1} when using \code{\link{add_duration}}.
 #' @param fail Name of the variable indicating that a spell ended in failure.
 #' @param distr The type of distribution to use in the hazard rate. Valid 
-#' options are ``weibull'' or ``loglog''.
+#' options are ``weibull'' or ``loglog''; defaults to ``weibull''. 
 #' @param max.iter Maximum number of iterations to use in the likelihood 
 #' maximization.
 #' @param na.action a function which indicates what should happen when the data 
 #' contain NAs. The default is set by the \code{na.action} setting of options, 
 #' and is \code{\link{na.fail}} if that is unset.
-#' @param silent Supress optimization output, \code{FALSE} by default.
+#' @param silent Suppress optimization output, \code{FALSE} by default.
 #' @param \dots Optional arguments, see details.
 #' 
 #' @details 
@@ -66,7 +66,7 @@
 #' @export spdur
 
 spdur <- function(duration, atrisk, data=NULL, last="end.spell", t.0="t.0", 
-                  fail="failure", distr=c("weibull", "loglog"), max.iter=300, na.action, 
+                  fail="failure", distr=c("weibull", "loglog"), max.iter=300, na.action,
                   silent=FALSE, ...) 
 { 
   cl <- match.call()
@@ -78,11 +78,16 @@ spdur <- function(duration, atrisk, data=NULL, last="end.spell", t.0="t.0",
   f2 <- as.formula(eval(atrisk))
   vars <- unique(c(all.vars(f1), all.vars(f2)))
   vars <- c(vars, last, t.0, fail)
-  if (missing(na.action)) na.action <- options("na.action")[[1]]
+  if (missing(na.action)) {
+    na.action <- options("na.action")[[1]]
+  }
   df <- do.call(na.action, list(data[, vars]))
+  # the only way to get to this point is na.pass; easier than trying to check
+  # if na.action is identical to na.pass function
+  if (any(is.na(df))) stop("na.pass is not supported")
   
   # Duration equation
-  mf.dur <- eval(model.frame(formula=duration, data=df), parent.frame())
+  mf.dur <- eval(model.frame(formula = duration, data=df), parent.frame())
   X <- model.matrix(attr(mf.dur, 'terms'), data=mf.dur)
   attr(X, "na.action") <- na.action(df)
   lhb <- model.response(mf.dur)

@@ -19,7 +19,7 @@ bscoup      <- add_duration(bscoup, "coup", unitID = "countryid", tID = "year",
 weib_model <- spdur(
   duration ~ milreg + instab + regconf,
   atrisk ~ couprisk + wealth + milreg + rwar + regconf + samerica + camerica,
-  data = bscoup, silent = TRUE)
+  data = bscoup, distr = "weib", silent = TRUE)
 
 loglog_model <- spdur(
   duration ~ milreg + instab + regconf,
@@ -76,8 +76,8 @@ loglog_model2 <- spdur(
   data = coup_train, distr = "loglog", silent = TRUE)
 
 ## ------------------------------------------------------------------------
-weib2_test_p   <- predict(weib_model2, newdata = coup_test)
-loglog2_test_p <- predict(loglog_model2, newdata = coup_test)
+weib2_test_p   <- predict(weib_model2, newdata = coup_test, na.action = na.omit)
+loglog2_test_p <- predict(loglog_model2, newdata = coup_test, na.action = na.omit)
 
 ## ----oos-sepplots, fig.show = "hold", fig.width = 5, fig.height = 5------
 library("separationplot")

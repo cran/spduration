@@ -10,7 +10,7 @@
 \arguments{
 \item{object}{A \code{\link{spdur}} class model object.}
 
-\item{\dots}{Optional aguments, not used.}
+\item{\dots}{Optional arguments, not used.}
 
 \item{pred.data}{Data on which to base forecasts, i.e. slice of last time
 unit's observations for all cross-sectional units.}
@@ -36,6 +36,7 @@ For situations in which the covariate values are known for future time
 periods, e.g. in a test sample use \code{\link{predict.spdur}} instead.
 }
 \examples{
+library(forecast)
 data(coups)
 data(model.coups)
 

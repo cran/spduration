@@ -4,9 +4,7 @@
 #' @param X Duration equation covariates.
 #' @param Z Risk equation covariates.
 #' @param max.iter Maximum iterations to try.
-#' @param silent Supress \code{\link{optim}} trace output?
-#' 
-#' @importFrom corpcor make.positive.definite
+#' @param silent Suppress \code{\link{optim}} trace output?
 #' 
 #' @keywords internal
 sploglog <- function(Y, X, Z, max.iter, silent=FALSE) {
@@ -22,7 +20,7 @@ sploglog <- function(Y, X, Z, max.iter, silent=FALSE) {
   a.init <- base$coefficients[ncol(X)+1]
   if (!silent) cat('Fitting split loglog...\n')
   trace <- !silent
-  est <- optim(c(x.inits, rep(0, ncol(Z)), a.init), sploglog_lnl, method="BFGS", 
+  est <- stats::optim(c(x.inits, rep(0, ncol(Z)), a.init), sploglog_lnl, method="BFGS", 
     control=list(trace=trace, maxit=max.iter), hessian=T, y=Y, X=X, Z=Z)
   
   # Solve other results
@@ -42,9 +40,7 @@ sploglog <- function(Y, X, Z, max.iter, silent=FALSE) {
 #' @param X Duration equation covariates.
 #' @param inits Vector of starting values. 
 #' @param max.iter Maximum iterations to try.
-#' @param silent Supress \code{\link{optim}} trace output?
-#' 
-#' @importFrom stats optim
+#' @param silent Suppress \code{\link{optim}} trace output?
 #' 
 #' @keywords internal
 loglog <- function(Y, X, inits=NULL, max.iter, silent=TRUE) {
@@ -53,7 +49,7 @@ loglog <- function(Y, X, inits=NULL, max.iter, silent=TRUE) {
   }
   
   trace <- !silent
-  est <- optim(inits, loglog_lnl, method="BFGS", 
+  est <- stats::optim(inits, loglog_lnl, method="BFGS", 
                control=list(trace=trace, maxit=max.iter), 
                hessian=T, y=Y, X=X)
   

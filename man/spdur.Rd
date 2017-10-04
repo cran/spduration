@@ -26,7 +26,7 @@ default \code{duration-1} when using \code{\link{add_duration}}.}
 \item{fail}{Name of the variable indicating that a spell ended in failure.}
 
 \item{distr}{The type of distribution to use in the hazard rate. Valid 
-options are ``weibull'' or ``loglog''.}
+options are ``weibull'' or ``loglog''; defaults to ``weibull''.}
 
 \item{max.iter}{Maximum number of iterations to use in the likelihood 
 maximization.}
@@ -35,7 +35,7 @@ maximization.}
 contain NAs. The default is set by the \code{na.action} setting of options, 
 and is \code{\link{na.fail}} if that is unset.}
 
-\item{silent}{Supress optimization output, \code{FALSE} by default.}
+\item{silent}{Suppress optimization output, \code{FALSE} by default.}
 
 \item{\dots}{Optional arguments, see details.}
 }

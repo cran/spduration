@@ -30,7 +30,7 @@
 #' If \code{y} is an indicator of the incidence of some event, rather than an 
 #' onset indicator, then ongoing spells of failure beyond the initial event are 
 #' coded as NA (e.g. 000111 becomes a spell of 0001 NA NA). This is to preserve
-#' compatability with the base dataset. Note that the order of rows may be 
+#' compatibility with the base dataset. Note that the order of rows may be 
 #' different though.
 #' 
 #' There cannot be missing values ("\code{NA}") in any of the key variables 
@@ -43,14 +43,14 @@
 #' \code{buildDuration()}.
 #' 
 #' \code{t.0} is the starting time of the period of observation at \code{tID}. 
-#' It is by default set as \code{duration - 1} and currenlty only serves as a 
+#' It is by default set as \code{duration - 1} and currently only serves as a 
 #' placeholder to allow future expansion for varying observation times.
 #' 
 #' @return
 #' Returns the original data frame with 8 duration-specific additional 
 #' variables:
 #' \item{failure}{Binary indicator of an event.}
-#' \item{ongoing}{Binary indicator for ongoing events, not counting the inital 
+#' \item{ongoing}{Binary indicator for ongoing events, not counting the initial 
 #' failure time.}
 #' \item{end.spell}{Binary indicator for the last observation in a spell, either
 #' due to censoring or failure.}

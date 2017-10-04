@@ -6,8 +6,8 @@
 \alias{residuals.spdur}
 \title{Predict methods for spdur Objects}
 \usage{
-\method{predict}{spdur}(object, newdata = NULL, type = c("response"),
-  truncate = TRUE, ...)
+\method{predict}{spdur}(object, newdata = NULL, type = "response",
+  truncate = TRUE, na.action = na.exclude, ...)
 
 \method{fitted}{spdur}(object, ...)
 
@@ -26,7 +26,10 @@ calculate}
 
 \item{truncate}{For conditional hazard, truncate values greater than 1.}
 
-\item{\dots}{not used, for compatability with generic function.}
+\item{na.action}{Function determining what should be done with missing values 
+in newdata. The default is to predict NA (\code{na.exclude}).}
+
+\item{\dots}{not used, for compatibility with generic function.}
 }
 \value{
 Returns a data frame with 1 column corresponding to \code{type}, in the same 

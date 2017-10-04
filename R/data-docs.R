@@ -44,7 +44,7 @@
 #' 
 #' @usage bscoups
 #' 
-#' @format A data frame with 5828 observations of 9 variables:
+#' @format A data frame with 5463 observations of 14 variables:
 #' \describe{
 #'  \item{\code{countryid}}{Gleditsch and Ward country codes.}
 #'  \item{\code{year}}{Year}
@@ -80,7 +80,7 @@
 #' 
 #' @description This is a model object for a split-duration model of the 
 #' Powell & Thyne coups. It is used in several example code sections to speed
-#' up package testing by elminiating the need to re-estimate a model each time.
+#' up package testing by eliminating the need to re-estimate a model each time.
 #' 
 #' @usage model.coups
 #' 
