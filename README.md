@@ -1,14 +1,25 @@
 
-spduration
-==========
+# spduration <img src="man/figures/logo.png" align="right" width="120" />
 
-[![Build Status](https://travis-ci.org/andybega/spduration.svg?branch=master)](https://travis-ci.org/andybega/spduration) [![CRAN version](http://www.r-pkg.org/badges/version/spduration)](https://cran.r-project.org/package=spduration) [![Coverage Status](https://coveralls.io/repos/github/andybega/spduration/badge.svg?branch=master)](https://coveralls.io/github/andybega/spduration?branch=master) [![codecov](https://codecov.io/gh/andybega/spduration/branch/master/graph/badge.svg)](https://codecov.io/gh/andybega/spduration)
+[![R-CMD-check](https://github.com/andybega/spduration/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/andybega/spduration/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+version](http://www.r-pkg.org/badges/version/spduration)](https://cran.r-project.org/package=spduration)
+[![Codecov test
+coverage](https://codecov.io/gh/andybega/spduration/branch/master/graph/badge.svg)](https://app.codecov.io/gh/andybega/spduration?branch=master)
 
-spduration implements a split-population duration model for duration data with time-varying covariates where a significant subset of the population or spells will not experience failure.
+spduration implements a split-population duration model for duration
+data with time-varying covariates where a significant subset of the
+population or spells will not experience failure.
 
 ``` r
-library(spduration)
+library("spduration")
+```
 
+    ## Registered S3 method overwritten by 'quantmod':
+    ##   method            from
+    ##   as.zoo.data.frame zoo
+
+``` r
 # Prepare data
 data(coups)
 dur.coups <- add_duration(coups, "succ.coup", unitID="gwcode", tID="year",
@@ -45,24 +56,23 @@ plot(model.coups, type = "hazard")
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
-Install
--------
+## Install
 
--   the latest released version from CRAN:
+- the latest released version from CRAN:
 
 ``` r
 install.packages("spduration")
 ```
 
--   the latest development version:
+- the latest development version:
 
 ``` r
 library(devtools)
 install_github("andybega/spduration")
 ```
 
-Contact
--------
+## Contact
 
--   submit suggestions, bugs, issues, questions at: <https://github.com/andybega/spduration/issues>
--   email: <adbeger+spduration@gmail.com>
+- submit suggestions, bugs, issues, questions at:
+  <https://github.com/andybega/spduration/issues>
+- email: <adbeger+spduration@gmail.com>

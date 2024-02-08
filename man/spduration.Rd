@@ -2,8 +2,8 @@
 % Please edit documentation in R/spduration-package.R
 \docType{package}
 \name{spduration}
-\alias{spduration}
 \alias{spduration-package}
+\alias{spduration}
 \title{Split-Population Duration (Cure) Regression Models}
 \description{
 The spduration package provides functions to estimate 
@@ -24,10 +24,10 @@ The main function \code{\link{spdur}} is used to estimate the model
 }
 \references{
 Boag, J.W. 1949. ``Maximum Likelihood Estimates of the Proportion of 
-      Patients Cured by Cancer Therapy.'' <http://www.jstor.org/stable/2983694>
+      Patients Cured by Cancer Therapy.'' <https://www.jstor.org/stable/2983694>
 
 	   Berkson, J. and Gage, R.P. ``Survival Curve for Cancer Patients Following 
-	     Treatment.'' <http://www.jstor.org/stable/2281318>
+	     Treatment.'' <https://www.jstor.org/stable/2281318>
 
     Leisch, Friedrich. 2009. ``Creating R Packages: A Tutorial.''
 
@@ -37,4 +37,26 @@ Boag, J.W. 1949. ``Maximum Likelihood Estimates of the Proportion of
 
     Svolik, Milan. 2008. ``Authoritarian Reversals and Democratic 
         Consolidation.'' American Political Science Review.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/andybega/spduration}
+  \item \url{https://www.andybeger.com/spduration/}
+  \item Report bugs at \url{https://github.com/andybega/spduration/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Andreas Beger \email{adbeger@gmail.com} (\href{https://orcid.org/0000-0003-1883-3169}{ORCID})
+
+Authors:
+\itemize{
+  \item Daina Chiba \email{dchiba@essex.ac.uk} (\href{https://orcid.org/0000-0002-9208-4373}{ORCID})
+  \item Daniel W. Hill, Jr. \email{dwhill@uga.edu}
+  \item Nils W. Metternich \email{n.metternich@ucl.ac.uk} (\href{https://orcid.org/0000-0001-8757-0409}{ORCID})
+  \item Shahryar Minhas \email{hermes829@gmail.com}
+  \item Michael D. Ward \email{michael.don.ward@gmail.com} (\href{https://orcid.org/0000-0002-6561-6186}{ORCID}) [copyright holder]
+}
+
 }
